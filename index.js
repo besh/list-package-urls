@@ -3,7 +3,7 @@ const fs = require("fs");
 const { spawn } = require("child_process");
 const path = require("path");
 const chalk = require("chalk");
-const packageJsonPath = path.resolve(__dirname, "package.json");
+const packageJsonPath = path.resolve(__dirname, "../../package.json");
 const parsedPackageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 const fileName = "package-urls.txt";
 const { dependencies = {}, devDependencies = {} } = parsedPackageJson;
@@ -57,7 +57,7 @@ Promise.all(promises).then(urls => {
 
   fs.writeFile(fileName, filterEmptyValues.join("\n"), err => {
     if (err) throw err;
-    const packageUrlPath = path.resolve(__dirname, `${fileName}`);
+    const packageUrlPath = path.resolve(__dirname, `../../${fileName}`);
     console.log(chalk.green(`File saved to ${packageUrlPath}!`));
     process.exit(0);
   });
