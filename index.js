@@ -53,8 +53,6 @@ allDependencies.forEach(dependency => {
 Promise.all(promises).then(urls => {
   const filterEmptyValues = urls.filter(url => url !== undefined);
 
-  console.log(filterEmptyValues);
-
   fs.writeFile(fileName, filterEmptyValues.join("\n"), err => {
     if (err) throw err;
     const packageUrlPath = path.resolve(__dirname, `../../${fileName}`);
